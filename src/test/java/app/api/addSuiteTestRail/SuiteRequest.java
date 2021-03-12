@@ -1,0 +1,34 @@
+package app.api.addSuiteTestRail;
+
+import app.api.baseRequest.BaseRequest;
+import app.api.constants.RequestHeaderConstants;
+import framework.utils.APIUtil;
+import framework.utils.JsonUtil;
+import framework.utils.LogUtil;
+import java.net.http.HttpResponse;
+
+public class SuiteRequest {
+
+    public static SuiteResponse sendPost(Suite sendingPost, String login, String password) {
+        LogUtil.info("Creating suite");
+        String URL = new AddSuiteBuilder()
+                .baseUrl()
+                .version()
+                .addSuiteEndpoint()
+                .build();
+        LogUtil.info(URL);
+        HttpResponse<String> result = APIUtil.postWithAuth(
+                URL,
+                JsonUtil.toJsonString(sendingPost),
+                RequestHeaderConstants.CONTENT_TYPE_HEADER_AUTH,
+                login,
+                password,
+                RequestHeaderConstants.CONTENT_TYPE_HEADER_KEY,
+                RequestHeaderConstants.HEADER_VALUE_APPLICATION_JSON);
+        LogUtil.info(String.format("Request body %s", result.body()));
+        return new SuiteResponse(
+                APIUtil.getResponseStatusCode(result),
+                JsonUtil.fromJsonString(APIUtil.getResponseBody(result), Suite.class),
+                BaseRequest.getContentType(result));
+    }
+}
