@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="294790b2-b54b-4dfe-8776-a7324ff1445d" name="Default Changelist" comment="fix comments" />
+    <list default="true" id="294790b2-b54b-4dfe-8776-a7324ff1445d" name="Default Changelist" comment="fix comments">
+      <change afterPath="$PROJECT_DIR$/src/test/resources/allure.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/framework/browser/WebDriverSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/framework/browser/WebDriverSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test/TheFinalTaskVariant2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test/TheFinalTaskVariant2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/screenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/screenshot.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/testRail.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/testRail.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/testResultScreenshot.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/testResultScreenshot.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../QALab" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -43,11 +52,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Аква\TheFinalTask\src\test\resources" />
       <recent name="D:\Аква\TheFinalTask\src\test\java\app\api" />
       <recent name="D:\Аква\TheFinalTask\src\test\java\app\api\enums" />
       <recent name="D:\Аква\TheFinalTask\src\test\java\app\ui\enums" />
       <recent name="D:\Аква\TheFinalTask" />
-      <recent name="D:\Аква\TheFinalTask\src\test\java" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Аква\TheFinalTask\src\test" />

@@ -27,6 +27,7 @@ final public class WebDriverSingleton {
 
     private static WebDriver initDriver() {
         String browser = System.getProperty("browser");
+        //String browser = "Chrome";
         switch (browser) {
             case "Chrome":
                 DesiredCapabilities jsCapabilities = chromeBrowser();

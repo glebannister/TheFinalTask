@@ -184,91 +184,91 @@ public class TheFinalTaskVariant2 {
 
     @AfterMethod
     public void closeDriver() {
-        LogUtil.step(7, "TestRail integration");
-        String pathToScreenshotTestRail = StringUtil.pathToScreenshot(
-                PropertyReader.getDataValue("screenshotNameTestRail"));
-        Browser.makeScreenshot(pathToScreenshotTestRail);
-        String loginTestRail = PropertyReader.getTestRailValue("loginTestRail");
-        String passwordTestRail = PropertyReader.getTestRailValue("passwordTestRail");
-        Suite suite = new Suite();
-        suite.setName(PropertyReader.getDataValue("suiteName"));
-        suite.setDescription(PropertyReader.getDataValue("suiteDescription"));
-        SuiteResponse suiteResponse = SuiteRequest.sendPost(suite, loginTestRail, passwordTestRail);
-        Assert.assertEquals(
-                suiteResponse.getStatusCode(),
-                HttpStatus.SC_OK,
-                String.format("Codes are not match %s %s", suiteResponse.getStatusCode(), HttpStatus.SC_OK));
-        Section section = new Section();
-        section.setDescription(PropertyReader.getDataValue("sectionDescription"));
-        section.setSuiteId(suiteResponse.getSuite().getId());
-        section.setParentId(null);
-        section.setName(PropertyReader.getDataValue("sectionName"));
-        SectionResponse sectionResponse = SectionRequest.sendPost(section, loginTestRail, passwordTestRail);
-        Assert.assertEquals(
-                sectionResponse.getStatusCode(),
-                HttpStatus.SC_OK,
-                String.format("Codes are not match %s %s", sectionResponse.getStatusCode(), HttpStatus.SC_OK));
-        Case testCase = new Case();
-        testCase.setTitle(PropertyReader.getDataValue("testCaseTitle"));
-        testCase.setTemplateId(TestCaseTemplateIdEnum.TEST_CASE.getValueOfTemplate());
-        testCase.setTypeId(TestCaseTypeEnum.FUNCTIONALITY.getValueOfType());
-        testCase.setPriorityId(TestCasePriorityEnum.MUST_TEST_1.getValueOfPriority());
-        testCase.setRefs(PropertyReader.getDataValue("reference"));
-        CaseResponse caseResponse = TestCaseRequest.sendPost(
-                sectionResponse.getSection().getId(),
-                testCase,
-                loginTestRail,
-                passwordTestRail);
-        Assert.assertEquals(
-                caseResponse.getStatusCode(),
-                HttpStatus.SC_OK,
-                String.format("Codes are not match %s %s", caseResponse.getStatusCode(), HttpStatus.SC_OK));
-        Run run = new Run();
-        run.setSuiteId(suiteResponse.getSuite().getId());
-        run.setName(PropertyReader.getDataValue("runName"));
-        run.setDescription(PropertyReader.getDataValue("runDescription"));
-        run.setAssignedtoId(RunAssignedToEnum.ME.getValueOfAssignedTo());
-        run.setIncludeAll(true);
-        run.setRefs(PropertyReader.getDataValue("reference"));
-        RunResponse runResponse = RunRequest.sendPost(run, loginTestRail, passwordTestRail);
-        Assert.assertEquals(
-                runResponse.getStatusCode(),
-                HttpStatus.SC_OK,
-                String.format("Codes are not match %s %s", runResponse.getStatusCode(), HttpStatus.SC_OK));
-        TestsResponse testsResponse = TestsRequest.getTests(
-                runResponse.getRun().getId(), loginTestRail, passwordTestRail);
-        Assert.assertEquals(
-                testsResponse.getStatusCode(),
-                HttpStatus.SC_OK,
-                String.format("Codes are not match %s %s", testsResponse.getStatusCode(), HttpStatus.SC_OK));
-        Result result = new Result();
-        result.setStatusId(ResultStatusIdEnum.PASSED.getValueOfStatus());
-        result.setComment(PropertyReader.getDataValue("resultComment"));
-        result.setVersion(PropertyReader.getDataValue("resultVersion"));
-        result.setDefects(PropertyReader.getDataValue("resultDefects"));
-        result.setAssignedtoId(Integer.parseInt(PropertyReader.getDataValue("myId")));
-        ResultResponse resultResponse = ResultRequest.sendPost(
-                testsResponse
-                        .getTests()
-                        .get(Integer.parseInt(PropertyReader.getDataValue("indexOfAddedTest")))
-                        .getId(),
-                result,
-                loginTestRail,
-                passwordTestRail);
-        Assert.assertEquals(
-                resultResponse.getStatusCode(),
-                HttpStatus.SC_OK,
-                String.format("Codes are not match %s %s", resultResponse.getStatusCode(), HttpStatus.SC_OK));
-        AttachmentResponse attachmentResponse = AttachmentRequest.sendPost(
-                resultResponse.getResult().getId(),
-                loginTestRail,
-                passwordTestRail,
-                Paths.get(pathToScreenshotTestRail));
-        Assert.assertEquals(
-                attachmentResponse.getStatusCode(),
-                HttpStatus.SC_OK,
-                String.format("Codes are not match %s %s", attachmentResponse.getStatusCode(), HttpStatus.SC_OK));
-        LogUtil.info("Close browser");
+//        LogUtil.step(7, "TestRail integration");
+//        String pathToScreenshotTestRail = StringUtil.pathToScreenshot(
+//                PropertyReader.getDataValue("screenshotNameTestRail"));
+//        Browser.makeScreenshot(pathToScreenshotTestRail);
+//        String loginTestRail = PropertyReader.getTestRailValue("loginTestRail");
+//        String passwordTestRail = PropertyReader.getTestRailValue("passwordTestRail");
+//        Suite suite = new Suite();
+//        suite.setName(PropertyReader.getDataValue("suiteName"));
+//        suite.setDescription(PropertyReader.getDataValue("suiteDescription"));
+//        SuiteResponse suiteResponse = SuiteRequest.sendPost(suite, loginTestRail, passwordTestRail);
+//        Assert.assertEquals(
+//                suiteResponse.getStatusCode(),
+//                HttpStatus.SC_OK,
+//                String.format("Codes are not match %s %s", suiteResponse.getStatusCode(), HttpStatus.SC_OK));
+//        Section section = new Section();
+//        section.setDescription(PropertyReader.getDataValue("sectionDescription"));
+//        section.setSuiteId(suiteResponse.getSuite().getId());
+//        section.setParentId(null);
+//        section.setName(PropertyReader.getDataValue("sectionName"));
+//        SectionResponse sectionResponse = SectionRequest.sendPost(section, loginTestRail, passwordTestRail);
+//        Assert.assertEquals(
+//                sectionResponse.getStatusCode(),
+//                HttpStatus.SC_OK,
+//                String.format("Codes are not match %s %s", sectionResponse.getStatusCode(), HttpStatus.SC_OK));
+//        Case testCase = new Case();
+//        testCase.setTitle(PropertyReader.getDataValue("testCaseTitle"));
+//        testCase.setTemplateId(TestCaseTemplateIdEnum.TEST_CASE.getValueOfTemplate());
+//        testCase.setTypeId(TestCaseTypeEnum.FUNCTIONALITY.getValueOfType());
+//        testCase.setPriorityId(TestCasePriorityEnum.MUST_TEST_1.getValueOfPriority());
+//        testCase.setRefs(PropertyReader.getDataValue("reference"));
+//        CaseResponse caseResponse = TestCaseRequest.sendPost(
+//                sectionResponse.getSection().getId(),
+//                testCase,
+//                loginTestRail,
+//                passwordTestRail);
+//        Assert.assertEquals(
+//                caseResponse.getStatusCode(),
+//                HttpStatus.SC_OK,
+//                String.format("Codes are not match %s %s", caseResponse.getStatusCode(), HttpStatus.SC_OK));
+//        Run run = new Run();
+//        run.setSuiteId(suiteResponse.getSuite().getId());
+//        run.setName(PropertyReader.getDataValue("runName"));
+//        run.setDescription(PropertyReader.getDataValue("runDescription"));
+//        run.setAssignedtoId(RunAssignedToEnum.ME.getValueOfAssignedTo());
+//        run.setIncludeAll(true);
+//        run.setRefs(PropertyReader.getDataValue("reference"));
+//        RunResponse runResponse = RunRequest.sendPost(run, loginTestRail, passwordTestRail);
+//        Assert.assertEquals(
+//                runResponse.getStatusCode(),
+//                HttpStatus.SC_OK,
+//                String.format("Codes are not match %s %s", runResponse.getStatusCode(), HttpStatus.SC_OK));
+//        TestsResponse testsResponse = TestsRequest.getTests(
+//                runResponse.getRun().getId(), loginTestRail, passwordTestRail);
+//        Assert.assertEquals(
+//                testsResponse.getStatusCode(),
+//                HttpStatus.SC_OK,
+//                String.format("Codes are not match %s %s", testsResponse.getStatusCode(), HttpStatus.SC_OK));
+//        Result result = new Result();
+//        result.setStatusId(ResultStatusIdEnum.PASSED.getValueOfStatus());
+//        result.setComment(PropertyReader.getDataValue("resultComment"));
+//        result.setVersion(PropertyReader.getDataValue("resultVersion"));
+//        result.setDefects(PropertyReader.getDataValue("resultDefects"));
+//        result.setAssignedtoId(Integer.parseInt(PropertyReader.getDataValue("myId")));
+//        ResultResponse resultResponse = ResultRequest.sendPost(
+//                testsResponse
+//                        .getTests()
+//                        .get(Integer.parseInt(PropertyReader.getDataValue("indexOfAddedTest")))
+//                        .getId(),
+//                result,
+//                loginTestRail,
+//                passwordTestRail);
+//        Assert.assertEquals(
+//                resultResponse.getStatusCode(),
+//                HttpStatus.SC_OK,
+//                String.format("Codes are not match %s %s", resultResponse.getStatusCode(), HttpStatus.SC_OK));
+//        AttachmentResponse attachmentResponse = AttachmentRequest.sendPost(
+//                resultResponse.getResult().getId(),
+//                loginTestRail,
+//                passwordTestRail,
+//                Paths.get(pathToScreenshotTestRail));
+//        Assert.assertEquals(
+//                attachmentResponse.getStatusCode(),
+//                HttpStatus.SC_OK,
+//                String.format("Codes are not match %s %s", attachmentResponse.getStatusCode(), HttpStatus.SC_OK));
+//        LogUtil.info("Close browser");
         Browser.quitBrowser();
     }
 }
